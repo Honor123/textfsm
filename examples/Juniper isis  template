@@ -1,0 +1,9 @@
+Value Filldown hostname (\S+)
+Value Required Interface (\S+)
+Value System (\S+)
+Value Level (\d)
+Value State (\w)
+
+Start
+  ^.*@${hostname}>.*
+  ^${Interface}\s+${System}\s+${Level}\s+${State} -> Record
