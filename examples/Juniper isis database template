@@ -1,0 +1,21 @@
+Value Filldown localH (\S+)
+Value Required remoteH (\S+)
+Value LocalIP (\S+)
+Value remoteIP (\S+)
+Value metric (\d+)
+
+Start
+  ^.*show isis database.*
+  ^${localH}_re0.00-00.*
+  ^${localH}_re1.00-00.*
+  ^${localH}-re0.00-00.*
+  ^${localH}-re1.00-00.*
+  ^${localH}.00-00.*
+  ^\s+IS extended neighbor: ${remoteH}-re0.00, Metric: default ${metric}
+  ^\s+IS extended neighbor: ${remoteH}-re1.00, Metric: default ${metric}
+  ^\s+IS extended neighbor: ${remoteH}_re0.00, Metric: default ${metric}
+  ^\s+IS extended neighbor: ${remoteH}_re1.00, Metric: default ${metric}
+  ^\s+IS extended neighbor: ${remoteH}.00, Metric: default ${metric}	
+  ^\s+IP address: ${LocalIP}
+  ^\s+Neighbor's IP address: ${remoteIP} -> Record
+  
